@@ -1,0 +1,92 @@
+import React from "react";
+import "../app.css";
+
+export default class Visnet extends React.Component {
+  state = {
+    loading: true,
+    visnetState: null
+  };
+
+  constructor(props) {
+    super(props);
+    //this.addRecord = this.addRecord.bind(this);
+  }
+
+  async componentDidMount() {
+    const url =
+      "https://api.airtable.com/v0/appwF2fIxMtd5aWsq/visnet/?api_key=keyiKLBibtNS6VRBi";
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data.records);
+    this.setState({ visnetState: data.records, loading: false });
+  }
+
+  addRecord = async (inputs) => {
+    //fetch api template
+    console.log(this);
+    const response = await fetch(
+      "https://api.airtable.com/v0/appwF2fIxMtd5aWsq/locatie/?api_key=keyiKLBibtNS6VRBi",
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: {
+            naam: "Yoeri",
+            omschrijving: "Is nen Bear",
+            afbeelding: [
+              {
+                url:
+                  "https://previews.123rf.com/images/roxanabalint/roxanabalint1312/roxanabalint131200148/24476498-demo-grunge-rubber-stamp-on-white.jpg"
+              }
+            ]
+          }
+        })
+      }
+    );
+  };
+
+  render() {
+    if (this.state.loading || !this.state.visnetState) {
+      return (
+        <div>
+          <h1> LOADING... </h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.addRecord}>+</button>
+          {this.state.visnetState.map((item, i) => {
+            return (
+              <div className="airtable_item">
+                <div className="card_data">
+                  {item.fields.vis && <h1>{item.fields.vis}</h1>}
+                  {item.fields.visplek && <p>visplek: {item.fields.visplek}</p>}
+                  {item.fields.lengte && <p>Lengte: {item.fields.lengte}</p>}
+                  {item.fields.gewicht && <p>Gewicht: {item.fields.gewicht}</p>}
+                  {item.fields.aas && <p>Aas: {item.fields.aas}</p>}
+                  {item.fields.omschrijving && (
+                    <p>{item.fields.omschrijving}</p>
+                  )}
+                  <span>{item.model}</span>
+                </div>
+                <div className="card_img">
+                  <img
+                    alt="vissoort"
+                    src={item.fields.afbeelding[0].url}
+                    width="50px"
+                  />
+                </div>
+                <div className="card_bio">
+                  {item.fields.omschrijving && (
+                    <p>{item.fields.omschrijving}</p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+  }
+}
