@@ -54,15 +54,6 @@ export default function Navigation() {
             Account
           </Link>
         </li>
-        <li>
-          <Link to="/visplekDetail">visplekDetail</Link>
-        </li>
-        <li>
-          <Link to="/azenDetail">azenDetail</Link>
-        </li>
-        <li>
-          <Link to="/visnetDetail">visnetDetail</Link>
-        </li>
       </ul>
     </nav>
   );

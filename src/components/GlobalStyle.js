@@ -177,6 +177,11 @@ form input, form select{
   margin-right:10px;
 }
 
+.account_img{
+  border-radius:0px;
+  height:20px;
+}
+
 
 .logo {
   display: block;
@@ -227,7 +232,19 @@ form input, form select{
   margin:0;
 }
 
+button{
+  cursor: pointer;
+}
 
+input[type="file"] {
+  cursor: pointer;
+}
+.link_button_detail{
+  display:block;
+}
 
+.filler_40{
+  height:40px;
+}
 
 `;

@@ -1,5 +1,9 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
+import bewerken from "../../public/img/bewerken.png";
+
 export default class Account extends React.Component {
   state = {
     loading: true,
@@ -30,7 +34,12 @@ export default class Account extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.addRecord}>+</button>
+          <Link to="/accountDetail" className="link_button_detail">
+            <button onClick={this.addRecord}>
+              <img className="account_img" src={bewerken} alt="Logo" />
+            </button>
+          </Link>
+
           {this.state.maadState.map((item, i) => {
             return (
               <div className="airtable_item">

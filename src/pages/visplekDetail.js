@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { Link } from "react-router-dom";
 
 export default function Records() {
   const { register, handleSubmit, watch, errors } = useForm({
@@ -47,7 +48,7 @@ export default function Records() {
       />
 
       <label>
-        omschrijving
+        Omschrijving
         <ErrorMessage
           errors={errors}
           name="omschrijving"
@@ -78,7 +79,7 @@ export default function Records() {
       />
 
       <label>
-        sfeer
+        Sfeer
         <ErrorMessage
           errors={errors}
           name="sfeer"
@@ -135,9 +136,11 @@ export default function Records() {
         <option value="paling">paling</option>
       </select>
 
-      <button input type="submit">
-        +
-      </button>
+      <Link to="/visplek" className="link_button_detail">
+        <button onClick={this.addRecord} type="submit">
+          +
+        </button>
+      </Link>
     </form>
   );
 }

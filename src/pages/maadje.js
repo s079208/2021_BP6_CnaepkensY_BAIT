@@ -54,7 +54,7 @@ export default class Maadje extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.addRecord}>+</button>
+          <div className="filler_40"></div>
           {this.state.maadState.map((item, i) => {
             return (
               <div className="airtable_item">
@@ -88,7 +88,7 @@ export default class Maadje extends React.Component {
           <div className="maadje_toevoegen">
             <h2>Zoek een maadje</h2>
             <div className="maadje_toevoegen_grid">
-              <input />
+              <input placeholder="1254-5892-4256" />
               <button>+</button>
             </div>
           </div>

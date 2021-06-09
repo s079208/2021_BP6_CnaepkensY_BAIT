@@ -1,5 +1,5 @@
 import React from "react";
-import "../app.css";
+import { Link } from "react-router-dom";
 
 export default class Visnet extends React.Component {
   state = {
@@ -55,13 +55,15 @@ export default class Visnet extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.addRecord}>+</button>
+          <Link to="/visnetDetail" className="link_button_detail">
+            <button onClick={this.addRecord}>+</button>
+          </Link>
           {this.state.visnetState.map((item, i) => {
             return (
               <div className="airtable_item">
                 <div className="card_data">
                   {item.fields.vis && <h1>{item.fields.vis}</h1>}
-                  {item.fields.visplek && <p>visplek: {item.fields.visplek}</p>}
+                  {item.fields.visplek && <p>Visplek: {item.fields.visplek}</p>}
                   {item.fields.lengte && <p>Lengte: {item.fields.lengte}</p>}
                   {item.fields.gewicht && <p>Gewicht: {item.fields.gewicht}</p>}
                   {item.fields.aas && <p>Aas: {item.fields.aas}</p>}

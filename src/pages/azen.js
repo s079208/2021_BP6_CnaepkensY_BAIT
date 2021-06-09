@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 export default class Visnet extends React.Component {
   state = {
     loading: true,
@@ -54,7 +56,9 @@ export default class Visnet extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.addRecord}>+</button>
+          <Link to="/azenDetail" className="link_button_detail">
+            <button onClick={this.addRecord}>+</button>
+          </Link>
           {this.state.visnetState.map((item, i) => {
             return (
               <div className="airtable_item">

@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { Link } from "react-router-dom";
 
 export default function Records() {
   const { register, handleSubmit, errors } = useForm({
@@ -132,9 +133,9 @@ export default function Records() {
         })}
       />
 
-      <button input type="submit">
-        +
-      </button>
+      <Link to="/azen" className="link_button_detail">
+        <button onClick={this.addRecord}>+</button>
+      </Link>
     </form>
   );
 }

@@ -13,6 +13,7 @@ import Account from "./pages/account";
 import VisplekDetail from "./pages/visplekDetail";
 import AzenDetail from "./pages/azenDetail";
 import VisnetDetail from "./pages/visnetDetail";
+import AccountDetail from "./pages/accountDetail";
 import Layout from "./components/Layout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -51,6 +52,9 @@ export default function App() {
           </Route>
           <Route path="/visnetDetail">
             <VisnetDetail />
+          </Route>
+          <Route path="/accountDetail">
+            <AccountDetail />
           </Route>
         </Switch>
       </Layout>

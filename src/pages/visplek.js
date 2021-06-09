@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class Visplekken extends React.Component {
   state = {
@@ -54,7 +55,10 @@ export default class Visplekken extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.addRecord}>+</button>
+          <Link to="/visplekDetail" className="link_button_detail">
+            <button onClick={this.addRecord}>+</button>
+          </Link>
+
           {this.state.vispl.map((item, i) => {
             return (
               <div className="airtable_item">
