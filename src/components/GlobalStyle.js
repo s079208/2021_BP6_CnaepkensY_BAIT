@@ -11,7 +11,6 @@ html {
     --color-accent-sec: #e2711d;
     --color-text: #f2f2f2;
     }
-    
 
 :root {
     position: relative;
@@ -45,6 +44,12 @@ body{
   grid-template-columns:59% 39%;
   
 }
+.airtable_item_prestaties {
+  width:85%;
+  margin: 0 auto 32px;
+  padding-bottom:8px;
+  border-bottom:solid 1px var(--color-background-sec); 
+}
 
 .airtable_item .card_data {
   display: block;
@@ -62,16 +67,18 @@ body{
 .airtable_item .card_img img {
   display: block;
   width:100%;
-  
   object-fit: cover;
 }
 
-.airtable_item .card_data h1{
+.airtable_item .card_data h1, .airtable_item_prestaties .card_data h2, h2{
   font-size: 20px;
   text-transform: uppercase;
   color: var(--color-accent-prim);
   margin-bottom:11px;
 }
+.airtable_item_prestaties .card_data h2{
+  font-size: 14px;
+  }
 
 .airtable_item .card_data p,.airtable_item .card_bio p {
   margin-bottom:6px;
@@ -81,19 +88,22 @@ body{
   color: var(--color-text);
 }
 
+.airtable_item_prestaties .card_data p{
+  padding-top: 8px;
+}
+
 /*-------main_style-------*/
 
 a{
   text-transform: capitalize;
   text-decoration: none;
   display: inline-block;
-  margin-right: 2vw;
   font-family: "roboto light";
   font-size: 2.5vh;}
 
 img{
   border-radius:100px;
-  margin-bottom: 2vh;}
+ }
 
 button{
   display: block;
@@ -120,6 +130,7 @@ nav ul{
 }
 nav a{ 
   font-size: 24px;
+  font-weight:500;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-accent-prim);
@@ -139,28 +150,84 @@ nav ul {
 
 
 /*-------Form_style-------*/
+ 
 form{
-  display:grid;
-  grid-gap:2rem;
-  grid-template-columns:20vw 20vw 20vw 20vw;
+  width:85%;
+  margin: 32px auto;
+}
+form label{
+  display:block;
+  margin:12px 18px;
+  font-size:14px;
+}
+form input, form select{
+  border-radius:50px;
+  height:30px;
+  width: 100%;
+  padding-left:14px;
 }
 
-label{
-  font-size:2rem;
-  line-height:3rem;
-}  
 
+
+
+/*------------------------*/
 .nav_img{
   border-radius:0px;
   height:20px;
-  position:relative;
-  top:1px;
   margin-right:10px;
+}
 
+
+.logo {
+  display: block;
+  width: 50%;
+  margin: 25px auto 0px;
+  border-radius: 0;
 }
-.grid_div{
-  display:;
-  flex-direction:row;
+.grid_prestatie{
+  display:grid !important;
+  grid-template-columns:45% 50% 5%;
+  width:100%;
+  
 }
+
+.text_right{
+  text-align:right;
+}
+
+.vriendCode{
+  width:85%;
+  margin:auto;
+  text-align:center;
+}
+.vriendCode p{
+  font-size:14px;
+}
+
+.maadje_toevoegen{
+  width:85%;
+  margin:auto;
+}
+
+.maadje_toevoegen_grid{
+  display:grid;
+  grid-template-columns:85% 10%;
+  grid-gap:5%;
+}
+
+.maadje_toevoegen_grid input{
+  width: 100%;
+  border-radius: 50px;
+  text-align: center;
+  height:30px;
+  margin-top:5px;
+}
+
+.maadje_toevoegen_grid button{
+  margin:0;
+}
+
+
+
 
 `;
