@@ -65,9 +65,6 @@ export default class Visnet extends React.Component {
                   {item.fields.lengte && <p>Lengte: {item.fields.lengte}</p>}
                   {item.fields.gewicht && <p>Gewicht: {item.fields.gewicht}</p>}
                   {item.fields.aas && <p>Aas: {item.fields.aas}</p>}
-                  {item.fields.omschrijving && (
-                    <p>{item.fields.omschrijving}</p>
-                  )}
                   <span>{item.model}</span>
                 </div>
                 <div className="card_img">

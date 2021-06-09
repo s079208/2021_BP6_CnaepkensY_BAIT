@@ -1,5 +1,4 @@
 import React from "react";
-import "../app.css";
 
 export default class Visplekken extends React.Component {
   state = {

@@ -2,9 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-import Button from "../components/Button";
-
-
 export default function Records() {
   const { register, handleSubmit, watch, errors } = useForm({
     criteriaMode: "all"
@@ -13,32 +10,20 @@ export default function Records() {
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
     console.log(data);
-    console.log(watch("visplek"));
-    console.log(watch("vissoort"));
-    console.log("Uw record is een " + (data.vissoort) + " van " + data.lengte + "mm en een gewicht van " + data.gewicht + "gram gevangen met " + data.aas + ". Met als visplek '" + data.visplek + "' en omschrijving: " + data.omschrijving);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Visplek</label>
-      <input name="visplek" ref={register} />
+      <input className="form_input_file" type="file" />
 
-      <label>Vissoort</label>
-      <select name="vissoort" ref={register}>
-        <option value="geen">geen</option>
-        <option value="baars">baars</option>
-        <option value="snoek">snoek</option>
-        <option value="snoekbaars">snoekbaars</option>
-        <option value="voorn">voorn</option>
-        <option value="karper">karper</option>
-        <option value="paling">paling</option>
-      </select>
+      <label>Naam</label>
+      <input name="visplek" ref={register} placeholder="Het MAS" />
 
       <label>
-        gevangen met welk Aas?
+        Adres
         <ErrorMessage
           errors={errors}
-          name="aas"
+          name="adres"
           render={({ messages }) => {
             console.log("messages", messages);
             return messages
@@ -50,7 +35,8 @@ export default function Records() {
         />
       </label>
       <input
-        name="aas"
+        placeholder="Hanzestedenplaats 1, 2000 Antwerpen"
+        name="adres"
         ref={register({
           required: "This input is required.",
           maxLength: {
@@ -61,7 +47,7 @@ export default function Records() {
       />
 
       <label>
-        Korte omschrijving
+        omschrijving
         <ErrorMessage
           errors={errors}
           name="omschrijving"
@@ -76,6 +62,7 @@ export default function Records() {
         />
       </label>
       <input
+        placeholder="Van kant tot water moet je wel even overbruggen"
         name="omschrijving"
         ref={register({
           required: "This input is required.",
@@ -84,33 +71,17 @@ export default function Records() {
             message: "Enkel letters"
           },
           maxLength: {
-            value: 125,
+            value: 150,
             message: "too long"
           }
         })}
       />
 
-      <label>Gewicht in grammen.</label>
-      <input
-        name="gewicht"
-        type="number"
-        ref={register({
-          minLength: {
-            value: 2,
-            message: "Minimaal twee cijfers"
-          },
-          maxlength: {
-            value: 6,
-            message: "Maximaal zes cijfers"
-          }
-        })}
-      />
-
       <label>
-        Lengte in "mm"
+        sfeer
         <ErrorMessage
           errors={errors}
-          name="lengte"
+          name="sfeer"
           render={({ messages }) => {
             console.log("messages", messages);
             return messages
@@ -122,22 +93,51 @@ export default function Records() {
         />
       </label>
       <input
-        name="lengte"
+        placeholder="druk bezocht"
+        name="sfeer"
         ref={register({
           pattern: {
-            value: /\d+/,
-            message: "This input is number only."
+            value: /^[A-Za-z- -.-!]+$/i,
+            message: "Enkel letters"
           },
-          minLength: {
-            value: 3,
-            message: "This input must exceed 10 characters"
+          maxLength: {
+            value: 50,
+            message: "too long"
           }
         })}
       />
 
-      <Button input type="submit">
-        Verzenden
-      </Button>
+      <label>Voornamelijk</label>
+      <select name="voornamelijk" ref={register}>
+        <option value="geen">geen</option>
+        <option value="baars">baars</option>
+        <option value="snoek">snoek</option>
+        <option value="snoekbaars" selected>
+          snoekbaars
+        </option>
+        <option value="voorn">voorn</option>
+        <option value="karper">karper</option>
+        <option value="paling">paling</option>
+      </select>
+
+      <label>en...</label>
+      <select name="en..." ref={register}>
+        <option value="geen" selected>
+          geen
+        </option>
+        <option value="baars">baars</option>
+        <option value="snoek">snoek</option>
+        <option value="snoekbaars" selected>
+          snoekbaars
+        </option>
+        <option value="voorn">voorn</option>
+        <option value="karper">karper</option>
+        <option value="paling">paling</option>
+      </select>
+
+      <button input type="submit">
+        +
+      </button>
     </form>
   );
 }

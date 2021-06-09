@@ -1,5 +1,4 @@
 import React from "react";
-import "../app.css";
 
 export default class Maadje extends React.Component {
   state = {
@@ -86,6 +85,13 @@ export default class Maadje extends React.Component {
               </div>
             );
           })}
+          <div className="maadje_toevoegen">
+            <h2>Zoek een maadje</h2>
+            <div className="maadje_toevoegen_grid">
+              <input />
+              <button>+</button>
+            </div>
+          </div>
         </div>
       );
     }
